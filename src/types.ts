@@ -49,6 +49,17 @@ export enum HVAC_MODES {
   FAN_ONLY = 'fan_only',
 }
 
+export enum FAN_MODES {
+  AUTO = 'auto',
+  QUIET = 'quiet',
+  DIFFUSE = 'diffuse',
+  LOW = 'low',
+  MEDIUM = 'medium',
+  MIDDLE = 'middle',
+  HIGH = 'high',
+  POWERFUL = 'powerful',
+}
+
 export interface ControlModeOption {
   value: string
   name: string

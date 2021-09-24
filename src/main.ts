@@ -27,6 +27,7 @@ import {
   PreparedSensor,
   HASS,
   HVAC_MODES,
+  FAN_MODES,
 } from './types'
 
 interface HANode extends Element {
@@ -250,6 +251,18 @@ export default class SimpleThermostat extends LitElement {
         const hvacModeValues = Object.values(HVAC_MODES) as Array<string>
         values.list.forEach((item: ControlModeOption) => {
           const index = hvacModeValues.indexOf(item.value)
+          sortedList[index] = item
+        })
+        return {
+          ...values,
+          list: sortedList,
+          mode: entity.state,
+        } as ControlMode
+      } else if (values.type == MODES.FAN) {
+        const sortedList: Array<Partial<ControlMode>> = []
+        const fanModeValues = Object.values(FAN_MODES) as Array<string>
+        values.list.forEach((item: ControlModeOption) => {
+          const index = fanModeValues.indexOf(item.value)
           sortedList[index] = item
         })
         return {
